@@ -1,0 +1,51 @@
+﻿@model TaskMA.Models.Status
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="page-header">
+    <h3 id="navbar">Delete</h3>
+</div>
+
+
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+    <h4>Warning!</h4>
+    <p>Are you sure you want to delete this?</p>
+</div>
+
+
+    <table class="table table-striped table-hover ">
+        <tr class="content">
+            <th class="content">
+                Status
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.StatusName)
+
+            </td>
+            
+        </tr>
+
+
+    </table>
+
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default btn-sm" />
+    </div>
+    }
+
+<br />
+
+|<a href="@Url.Action("Index", "Admin", new {  })" title="Back to List">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+    <span class="sr-only">Back to List</span>
+</a> |

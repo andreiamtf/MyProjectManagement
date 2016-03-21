@@ -1,0 +1,94 @@
+﻿@model TaskMA.Models.TaskDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="page-header">
+    <h3 id="navbar">Delete</h3>
+</div>
+
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+    <h4>Warning!</h4>
+    <p>Are you sure you want to delete this?</p>
+</div>
+
+<table class="table table-striped table-hover ">
+    <tr class="content">
+        <th class="content">
+            Employee Name
+
+        </th>
+
+        <th class="content">
+            Status
+        </th>
+
+
+        <th class="content">
+            Task
+        </th>
+
+        <th class="Description">
+            Description
+        </th>
+
+        <th class="Description">
+            Assign Date
+        </th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.employee.EmpName)
+
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.status.StatusName)
+
+        </td>
+
+        <td>
+
+            @Html.DisplayFor(model => model.TaskName)
+
+        </td>
+        <td>
+
+
+            @Html.DisplayFor(model => model.Description)
+
+        </td>
+
+        <td>
+
+
+            @Html.DisplayFor(model => model.Assign_Dt)
+
+        </td>
+    </tr>
+
+
+</table>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default btn-sm" />
+    </div>
+
+}
+<br />
+
+|<a href="@Url.Action("Index", new {  })" title="Back to List">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+    <span class="sr-only">Back to List</span>
+</a> |
+
+

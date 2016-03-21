@@ -1,0 +1,40 @@
+﻿@model TaskMA.Models.Status
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="page-header">
+    <h3 id="navbar">Details</h3>
+</div>
+
+<table class="table table-striped table-hover ">
+    <tr class="content">
+        <th class="Description">
+            Status
+        </th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.StatusName)
+
+        </td>
+    </tr>
+
+</table>
+
+<p>
+    <div id="Edit">
+        <button class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Status", new { id = Model.StatusId })';return false;">Edit</button>
+    </div>
+</p>
+
+<br />
+
+|<a href="@Url.Action("Index", "Admin", new {  })" title="Back to List">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+    <span class="sr-only">Back to List</span>
+</a> |
+

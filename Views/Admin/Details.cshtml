@@ -1,0 +1,44 @@
+﻿@model TaskMA.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="page-header">
+    <h3 id="navbar">Employee Profile</h3>
+</div>
+
+<dl class="dl-horizontal">
+
+    <dd><img id="img_profile" src="~/Content/Images/Profile/@Model.ImagePath"></dd>
+
+    <dt>Employee Name</dt>
+    <dd>@Html.DisplayFor(model => model.EmpName)</dd>
+
+    <dt>Birth Date</dt>
+    <dd>@Html.DisplayFor(model => model.BirthDate)</dd>
+
+    <dt>Email</dt>
+    <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+    <dt>Phone Number</dt>
+    <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+    <dt>Job</dt>
+    <dd>@Html.DisplayFor(model => model.Job)</dd>
+
+</dl>
+
+<p>
+    <div id="Edit">
+        <button class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Admin", new { id = Model.EmployeeId })';return false;">Edit</button>
+    </div>
+</p>
+<br />
+
+    |<a href="@Url.Action("Index", new {  })" title="Back to List">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+    <span class="sr-only">Back to List</span>
+</a> |  
+
+

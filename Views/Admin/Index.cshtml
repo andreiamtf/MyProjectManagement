@@ -1,0 +1,26 @@
+﻿@model TaskMA.Models.Employee_Status
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h3 id="navbar">Employees</h3>
+</div>
+
+@Html.Partial("_Employee", Model)
+
+<div class="page-header">
+    <h3 id="navbar">Projects</h3>
+</div>
+
+@Html.Partial("~/Views/Projects/_Project.cshtml", Model)
+
+<div class="page-header">
+    <h3 id="navbar">Status</h3>
+</div>
+
+@Html.Partial("~/Views/Status/_Status.cshtml", Model)
+
+
+

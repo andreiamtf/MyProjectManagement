@@ -1,0 +1,127 @@
+﻿@model TaskMA.Models.Employee_Status
+@using PagedList.Mvc;
+@using PagedList;
+@using TaskMA.Models;
+@using System.Collections.Generic;
+
+
+
+<img id="divLoading" src="@Url.Content("~/Content/Images/loading.gif")" alt="" />
+
+
+
+<div id="divEmployee" class="panel panel-default">
+
+    @*Warning sucess messages*@
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+            <p><strong>Success:</strong> @TempData["Success"].ToString()</p>
+        </div>
+    }
+
+    else if (TempData["Success_edit"] != null)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+            <p><strong>Success:</strong> @TempData["Success_edit"].ToString()</p>
+        </div>
+    }
+
+    else if (TempData["Success_delete"] != null)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove"></span></button>
+            <p><strong>Success:</strong> @TempData["Success_delete"].ToString()</p>
+        </div>
+    }
+
+    <div class="panel-heading">
+
+        <div id="Search">
+            @using (Ajax.BeginForm("EmployeeSearch", "Admin", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "divEmployee",
+                LoadingElementId = "divLoading"
+            }))
+            {
+                @Html.TextBox("employeeSearchBox", "", new { @class = "search_box", placeholder =" Search employee..." })
+                <input class="btn btn-default btn-sm" type="submit" value="Search" />
+            }
+        </div>
+        <div id="Clear">
+            @Ajax.ActionLink("Clear all", "EmployeeSearch", "Admin", new { @class = "search_box", employeeSearchBox = " " },
+            new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "divEmployee",
+                LoadingElementId = "divLoading"
+            }, new { @class = "btn btn-default btn-sm" })
+
+        </div>
+        <div id="Add">
+            <button class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Create", "Admin")';return false;">New Employee</button>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-striped table-hover ">
+            <tr class="content">
+                <th class="content">
+                    ID
+                </th>
+                <th class="content">
+                    Employee Name
+                </th>
+                <th class="content">
+                    Operations
+                </th>
+            </tr>
+
+
+            @foreach (var item in Model.employees)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpName)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id=item.EmployeeId })" title="Edit">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <span class="sr-only">Edit</span>
+                        </a> |
+                        <a href="@Url.Action("Details", new { id=item.EmployeeId })" title="Details">
+                            <i class="glyphicon glyphicon-list"></i>
+                            <span class="sr-only">Details</span>
+                        </a> |
+                        <a href="@Url.Action("Delete", new { id=item.EmployeeId })" title="Delete">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span class="sr-only">Delete</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="pagination pagination-sm">
+            @Html.PagedListPager(
+                         new StaticPagedList<Employee>(Model.employees, Model.employeePageNumber, Model.employeePageSize, Model.employeeCount),
+                                                                   pageNumber => Url.Action("EmployeeSearch", new { pageIndex = pageNumber, employeeSearchBox = Model.employeeSearchBox }
+                    ),
+                       PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                       PagedListRenderOptions.Classic, new AjaxOptions()
+                       {
+                           HttpMethod = "GET",
+                           UpdateTargetId = "divEmployee",
+                           LoadingElementId = "divLoading"
+                       })
+                                   )
+        </div>
+    </div>
+</div>
