@@ -1,0 +1,127 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+/*My CSS*/
+
+#Search {
+
+float:left;
+margin-right:1px;
+
+}
+
+#Clear {
+float:left;
+margin-right:1px;
+
+}
+
+#Add {
+float:left;
+
+}
+
+.search_box {
+float:left;
+height:30px;
+width:250px;
+margin-right:1px;
+border-radius: 5px;
+}
+
+.head_name {
+float:left;
+background-color:red;
+
+}
+
+#home_image {
+width:150px;
+height:150px;
+margin-left:850px;
+
+}
+
+#divLoading{
+position: absolute;
+display:none;   
+z-index:1;
+margin-left:560px;
+margin-top:150px;
+width:50px;
+height:50px; 
+
+}
+
+#divLoading_status{
+position: absolute;
+display:none;   
+z-index:1;
+margin-left:560px;
+margin-top:180px;
+width:50px;
+height:50px; 
+
+}
+
+
+#divLoading_project{
+position: absolute;
+display:none;   
+z-index:1;
+margin-left:560px;
+margin-top:180px;
+width:50px;
+height:50px; 
+
+}
+
+#divLoading_tasks{
+position: absolute;
+display:none;   
+z-index:1;
+margin-left:560px;
+margin-top:180px;
+width:50px;
+height:50px; 
+
+}
+
+#img_profile{
+width:200px;
+height:200px; 
+margin-bottom:30px;
+}
+
+.btn-lg,
+.btn-group-lg > .btn {
+  /* padding: 14px 16px; */
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}   
+
